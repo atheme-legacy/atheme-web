@@ -124,6 +124,52 @@ class MemoRoot(object):
         webinfo.response.headers['location'] = 'ignore_list'
         return ''
 
+    def write(self, to=''):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        t = Templite('memowrite')
+        return t.render(webinfo=webinfo, conn=conn, to=to)        
+
+    def write_commit(self, to, message):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        conn.memoserv.send(to, message)
+        t = Templite('memosent')
+        return t.render(webinfo=webinfo, conn=conn, to=to)
+
+    def forward(self, id, to=''):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        t = Templite('memoforward')
+        return t.render(webinfo=webinfo, conn=conn, message_id=id, to=to)
+
+    def forward_commit(self, to, message_id):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        conn.memoserv.forward(to, message_id)
+        t = Templite('memosent')
+        return t.render(webinfo=webinfo, conn=conn, to=to)
+
 class UserRoot(object):
     def __init__(self):
         self.memo = MemoRoot()
