@@ -17,6 +17,18 @@ def get_xmlrpc_connection():
 
     return conn
 
+class ChannelRoot(object):
+    def list(self):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        t = Templite('mychannels_list')
+        return t.render(webinfo=webinfo, conn=conn)
+
 class MemoRoot(object):
     def delete_confirm(self, id):
         try:
@@ -173,6 +185,7 @@ class MemoRoot(object):
 class UserRoot(object):
     def __init__(self):
         self.memo = MemoRoot()
+        self.channel = ChannelRoot()
 
     def login(self):
         t = Templite('userlogin')
