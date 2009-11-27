@@ -6,6 +6,35 @@
 
 from xmlrpclib import ServerProxy
 
+class AthemeNickServMethods(object):
+    """
+    Parse Atheme NickServ responses.  Since the XML interface provides the same output as the IRC interface, we
+    have to do this.  It's kind of a pain in the ass.
+    """
+    def __init__(self, parent):
+        self.parent = parent
+
+    def _parse_access(self, data):
+        raw_lines = data.split('\n')
+
+        list = []
+        for line in raw_lines:
+            fields = line.split(' ')
+
+            if fields[0] != 'Access':
+                continue
+
+            tuple = {'channel': fields[4], 'flags': fields[2]}
+            list.append(tuple)
+
+        return list
+
+    def list_own_access(self):
+        return self._parse_access(self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'NickServ', 'MYACCESS'))
+
+    def list_access(self, target):
+        return self._parse_access(self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'NickServ', 'LISTCHANS', target))
+
 class AthemeChanServMethods(object):
     """
     Parse Atheme ChanServ responses.  Since the XML interface provides the same output as the IRC interface, we
@@ -95,6 +124,7 @@ class AthemeXMLConnection(object):
         self.proxy = ServerProxy(url)
         self.chanserv = AthemeChanServMethods(self)
         self.memoserv = AthemeMemoServMethods(self)
+        self.nickserv = AthemeNickServMethods(self)
 
     def __getattr__(self, name):
         return self.proxy.__getattr__(name)
