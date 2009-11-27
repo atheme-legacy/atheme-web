@@ -1,0 +1,42 @@
+atheme-web - an actually working web interface for Services
+-----------------------------------------------------------
+
+Due to popular demand, we have created a web interface for Atheme.  Total
+development time so far: about 4 hours.
+
+Some things are working, other things are not yet.  Code is accepted.
+
+Requirements
+------------
+
+Python Paste (Debian: python-paste)
+Python 2.5 or later
+
+Installation instructions
+-------------------------
+
+1. Make sure services has XMLRPC enabled.
+
+2. $EDITOR athemeweb/config.py, edit config values appropriately.
+
+3. Optionally change static/style.css and static/logo.png.  I for one,
+   do not think you are the StaticBox IRC network.
+
+4. python launch.py
+
+5. Enjoy.
+
+In reality, you probably want to use mod_wsgi or something, but I haven't
+figured that one out yet.  I'll get back to you.
+
+TODO
+----
+
+Mostly the channel integration and account tab need to be finished up.  We
+are also interested in ALIS integration for obvious reasons.
+
+Bugs
+----
+
+Report bugs to http://jira.atheme.org/ against the SRVWEB (Atheme Services - Web)
+component.
