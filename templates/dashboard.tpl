@@ -1,7 +1,5 @@
 ${ include("header") }$
 
-<ul>
-<li><a href="memo/list">memo list</a></li>
-</ul>
+TODO: Put actual content here, e.g. an overview of stuff.
 	
 ${ include("footer") }$
