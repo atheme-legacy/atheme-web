@@ -8,3 +8,55 @@ body {
 	background: url('/static?file=logo.png') no-repeat #cacaca;
 }
 
+#content {
+	margin: 1em;
+}
+
+/* Show only to IE PC \*/
+* html .boxhead h2 {height: 1%;} /* For IE 5 PC */
+
+.sidebox {
+	margin: 25px 100px 0px; /* center for now */
+	width: 15em; /* ems so it will grow */
+	background: #fff;
+	font-size: 100%;
+}
+.boxhead {
+	background: #fff;
+	margin: 0;
+	padding: 0px;
+	text-align: center;
+}
+.boxhead h2 {
+	background: url(/static?file=boxbg.png); repeat;
+	border: 1px solid #bbbbbb;
+	margin: 0;
+	padding: 0px 0px 0px;
+	color: #000; 
+	font-weight: bold; 
+	font-size: 1.0em; 
+	color: #fff;
+	line-height: 1.2em;
+}
+.boxbody {
+	background: #fff;
+	border: 1px solid #bbbbbb;
+	margin: 0;
+	font-size: 75%;
+	padding: 10px 10px 0px;
+}
+
+.boxbody input {
+	font-family: "Trebuchet MS", sans-serif;
+	font-size: 100%;
+}
+
+.boxbody input[type=text], input[type=password] {
+	width: 100%;
+}
+
+.boxbody input[type=submit] {
+	float: right;
+	margin: 0;
+}
+

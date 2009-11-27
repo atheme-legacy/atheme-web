@@ -1,5 +1,7 @@
 ${ include("header") }$
 
-${ import cgi; print cgi.escape(repr(webinfo)) }$
+<ul>
+<li><a href="memo/list">memo list</a></li>
+</ul>
 	
 ${ include("footer") }$

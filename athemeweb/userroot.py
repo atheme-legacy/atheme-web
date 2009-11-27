@@ -9,7 +9,64 @@ from thirdparty.templite import Templite
 from middleware.athemeconnection import AthemeXMLConnection
 from athemeweb.config import XMLRPC_PATH
 
+def get_xmlrpc_connection():
+    sessiondata = webinfo.environ['paste.session.factory']()
+    conn = AthemeXMLConnection(XMLRPC_PATH)
+    conn.username = sessiondata['conn.username']
+    conn.authcookie = sessiondata['conn.authcookie']
+
+    return conn
+
+class MemoRoot(object):
+    def delete_confirm(self, id):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = 'login'
+            return ''
+
+        conn.memoserv.delete(id)
+        t = Templite('memodeleted')
+        return t.render(webinfo=webinfo, conn=conn, id=id)
+
+    def delete(self, id):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = 'login'
+            return ''
+
+        t = Templite('memodelete')
+        return t.render(webinfo=webinfo, conn=conn, id=id)
+
+    def read(self, id):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = 'login'
+            return ''
+
+        t = Templite('memoread')
+        return t.render(webinfo=webinfo, conn=conn, id=id)
+
+    def list(self):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = 'login'
+            return ''
+
+        t = Templite('memolist')
+        return t.render(webinfo=webinfo, conn=conn)
+
 class UserRoot(object):
+    def __init__(self):
+        self.memo = MemoRoot()
+
     def login(self):
         t = Templite('userlogin')
         return t.render()
@@ -30,11 +87,8 @@ class UserRoot(object):
         return ''
 
     def dashboard(self):
-        sessiondata = webinfo.environ['paste.session.factory']()
         try:
-            conn = AthemeXMLConnection(XMLRPC_PATH)
-            conn.username = sessiondata['conn.username']
-            conn.authcookie = sessiondata['conn.authcookie']
+            conn = get_xmlrpc_connection()
         except:
             webinfo.response.status = "302 Found"
             webinfo.response.headers['location'] = 'login'
