@@ -23,7 +23,7 @@ class MemoRoot(object):
             conn = get_xmlrpc_connection()
         except:
             webinfo.response.status = "302 Found"
-            webinfo.response.headers['location'] = 'login'
+            webinfo.response.headers['location'] = '/user/login'
             return ''
 
         conn.memoserv.delete(id)
@@ -35,7 +35,7 @@ class MemoRoot(object):
             conn = get_xmlrpc_connection()
         except:
             webinfo.response.status = "302 Found"
-            webinfo.response.headers['location'] = 'login'
+            webinfo.response.headers['location'] = '/user/login'
             return ''
 
         t = Templite('memodelete')
@@ -46,7 +46,7 @@ class MemoRoot(object):
             conn = get_xmlrpc_connection()
         except:
             webinfo.response.status = "302 Found"
-            webinfo.response.headers['location'] = 'login'
+            webinfo.response.headers['location'] = '/user/login'
             return ''
 
         t = Templite('memoread')
@@ -57,11 +57,72 @@ class MemoRoot(object):
             conn = get_xmlrpc_connection()
         except:
             webinfo.response.status = "302 Found"
-            webinfo.response.headers['location'] = 'login'
+            webinfo.response.headers['location'] = '/user/login'
             return ''
 
         t = Templite('memolist')
         return t.render(webinfo=webinfo, conn=conn)
+
+    def ignore_list(self):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        t = Templite('memoignores')
+        return t.render(webinfo=webinfo, conn=conn)
+
+    def ignore_add(self):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        t = Templite('memoignoreadd')
+        return t.render(webinfo=webinfo, conn=conn)
+
+    def ignore_add_commit(self, account):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        conn.memoserv.ignore_add(account)
+        webinfo.response.status = "302 Found"
+        webinfo.response.headers['location'] = 'ignore_list'
+        return ''
+
+    def ignore_delete(self, account):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        conn.memoserv.ignore_delete(account)
+        webinfo.response.status = "302 Found"
+        webinfo.response.headers['location'] = 'ignore_list'
+        return ''
+
+    def ignore_clear(self):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        conn.memoserv.ignore_clear()
+        webinfo.response.status = "302 Found"
+        webinfo.response.headers['location'] = 'ignore_list'
+        return ''
 
 class UserRoot(object):
     def __init__(self):

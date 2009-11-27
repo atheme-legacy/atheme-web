@@ -4,7 +4,7 @@ body {
 }
 
 #header {
-	height: 86px;
+	height: 83px;
 	background: url('/static?file=logo.png') no-repeat #cacaca;
 }
 
@@ -28,7 +28,7 @@ body {
 	text-align: center;
 }
 .boxhead h2 {
-	background: url(/static?file=boxbg.png); repeat;
+	background: url('/static?file=boxbg.png') repeat;
 	border: 1px solid #bbbbbb;
 	margin: 0;
 	padding: 0px 0px 0px;
@@ -47,7 +47,7 @@ body {
 }
 
 .boxbody input {
-	font-family: "Trebuchet MS", sans-serif;
+	font-family: "Trebuchet MS", "Droid Sans", sans-serif;
 	font-size: 100%;
 }
 
@@ -58,5 +58,39 @@ body {
 .boxbody input[type=submit] {
 	float: right;
 	margin: 0;
+}
+
+#navlinks {
+	background: #cacaca;
+	margin: 0;
+	text-align: right;
+	min-height: 19px;
+	padding-right: 1em;
+	padding-left: 0;
+}
+
+#navlinks li {
+	background: #eeeeee;
+	display: inline;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+	margin-left: 0.25em;
+	margin-right: 0.25em;
+	text-align: center;
+}
+
+#navlinks li a {
+	color: #000;
+	text-decoration: none;
+}
+
+#navlinks li:hover {
+	background: #000;
+	border-radius: 3px;
+	color: #fff;
+}
+
+#navlinks li a:hover {
+	color: #fff;
 }
 

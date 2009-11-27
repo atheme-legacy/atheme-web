@@ -2,6 +2,10 @@ ${ include("header") }$
 
 ${ list = conn.memoserv.list() }$
 
+<div class="boxhead">
+	<h2>Memo List</h2>
+</div>
+<div class="boxbody">
 <table width="100%">
 
 <tr>
@@ -18,7 +22,6 @@ ${ list = conn.memoserv.list() }$
 	}$
 
 </table>
-
-<a href="/user/dashboard">Return to dashboard</a>
+</div>
 
 ${ include("footer") }$

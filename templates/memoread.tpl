@@ -2,12 +2,27 @@ ${ include("header") }$
 
 ${ memo = conn.memoserv.read(id) }$
 
-<table width="100%">
+<div style="width: 20%; margin-left: 0.5em; float: right;">
 
-<tr>
-	<th>ID</th>
-	<td>${ emit(id) }$</th>
-</tr>
+<div class="boxhead">
+	<h2>Actions</h2>
+</div>
+<div class="boxbody">
+	<div style="text-align: center;"><a href="delete?id=${ emit(id) }$">Delete</a></div>
+	<div style="text-align: center;"><a href="write?to=${ emit(memo['from']) }$">Reply</a></div>
+	<div style="text-align: center;"><a href="forward?id=${ emit(id) }$">Forward</a></div>
+	<div style="text-align: center;"><a href="ignore_add_commit?account=${ emit(memo['from']) }$">Ignore User</a></div>
+</div>
+
+</div>
+
+<div style="width: 79%; margin-right: 0.5em;">
+<div class="boxhead">
+	<h2>Memo #${ emit(id) }$</h2>
+</div>
+<div class="boxbody">
+
+<table width="100%">
 
 <tr>
 	<th>From</th>
@@ -26,7 +41,7 @@ ${ memo = conn.memoserv.read(id) }$
 
 </table>
 
-<a href="delete?id=${ emit(id) }$">Delete this memo.</a><br>
-<a href="list">Return to memo list.</a>
+</div>
+</div>
 
 ${ include("footer") }$
