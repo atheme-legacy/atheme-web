@@ -132,3 +132,6 @@ class AthemeXMLConnection(object):
     def login(self, username, password):
         self.username = username
         self.authcookie = self.atheme.login(username, password)
+
+    def logout(self):
+        self.atheme.logout(self.authcookie, self.username)
