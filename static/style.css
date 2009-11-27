@@ -1,0 +1,10 @@
+body {
+	font-family: "Trebuchet MS", "Droid Sans", sans-serif;
+	margin: 0;
+}
+
+#header {
+	height: 86px;
+	background: url('/static?file=logo.png') no-repeat #cacaca;
+}
+
