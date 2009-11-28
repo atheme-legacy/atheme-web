@@ -9,6 +9,8 @@ from thirdparty.templite import Templite
 from middleware.athemeconnection import AthemeXMLConnection
 from athemeweb.config import XMLRPC_PATH
 
+from urllib import quote_plus
+
 def get_xmlrpc_connection():
     sessiondata = webinfo.environ['paste.session.factory']()
     conn = AthemeXMLConnection(XMLRPC_PATH)
@@ -28,6 +30,65 @@ class ChannelRoot(object):
 
         t = Templite('mychannels_list')
         return t.render(webinfo=webinfo, conn=conn)
+
+    def info(self, channel):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        t = Templite('channelinfo')
+        return t.render(webinfo=webinfo, conn=conn, channel=channel)
+
+    def edit_flags(self, channel, nick=''):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        t = Templite('channeleditflags')
+        return t.render(webinfo=webinfo, conn=conn, channel=channel, nick=nick)
+
+    def set_flags(self, channel, nick, flags):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        conn.chanserv.set_access_flags(channel, nick, flags)
+        webinfo.response.status = "302 Found"
+        webinfo.response.headers['location'] = 'info?channel=' + quote_plus(channel)
+        return ''
+
+    def remove_flags(self, channel, nick):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        conn.chanserv.set_access_flags(channel, nick, '-*fF')
+        webinfo.response.status = "302 Found"
+        webinfo.response.headers['location'] = 'info?channel=' + quote_plus(channel)
+        return ''
+
+    def info(self, channel):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        t = Templite('channelinfo')
+        return t.render(webinfo=webinfo, conn=conn, channel=channel)
 
 class MemoRoot(object):
     def delete_confirm(self, id):
