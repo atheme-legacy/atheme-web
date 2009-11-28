@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+# depending on your mod_wsgi configuration, you may need to uncomment these
+# lines and adjust them as appropriate to make the relocations work:
+
+# import os, sys
+# sys.path.append('/var/www/atheme-web')
+# os.chdir('/var/www/atheme-web')
+
 def make_app(global_conf=None):
     from middleware.classpublisher import ClassPublisher
     from athemeweb.webroot import WebRoot
