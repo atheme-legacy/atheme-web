@@ -1,7 +1,7 @@
 ${ import cgi }$
 <html>
 <head>
-	<title>Login</title>
+	<title>Atheme Services Web Interface</title>
 	<link rel="stylesheet" href="/static?file=style.css" type="text/css">
 </head>
 <body>
