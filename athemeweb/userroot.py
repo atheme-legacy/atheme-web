@@ -28,8 +28,7 @@ class ChannelRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('mychannels_list')
-        return t.render(webinfo=webinfo, conn=conn)
+        return Templite('mychannels_list').render(webinfo=webinfo, conn=conn)
 
     def info(self, channel):
         try:
@@ -39,8 +38,7 @@ class ChannelRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('channelinfo')
-        return t.render(webinfo=webinfo, conn=conn, channel=channel)
+        return Templite('channelinfo').render(webinfo=webinfo, conn=conn, channel=channel)
 
     def edit_flags(self, channel, nick=''):
         try:
@@ -50,8 +48,7 @@ class ChannelRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('channeleditflags')
-        return t.render(webinfo=webinfo, conn=conn, channel=channel, nick=nick)
+        return Templite('channeleditflags').render(webinfo=webinfo, conn=conn, channel=channel, nick=nick)
 
     def set_flags(self, channel, nick, flags):
         try:
@@ -87,8 +84,7 @@ class ChannelRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('channelinfo')
-        return t.render(webinfo=webinfo, conn=conn, channel=channel)
+        return Templite('channelinfo').render(webinfo=webinfo, conn=conn, channel=channel)
 
 class MemoRoot(object):
     def delete_confirm(self, id):
@@ -100,8 +96,7 @@ class MemoRoot(object):
             return ''
 
         conn.memoserv.delete(id)
-        t = Templite('memodeleted')
-        return t.render(webinfo=webinfo, conn=conn, id=id)
+        return Templite('memodeleted').render(webinfo=webinfo, conn=conn, id=id)
 
     def delete(self, id):
         try:
@@ -111,8 +106,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('memodelete')
-        return t.render(webinfo=webinfo, conn=conn, id=id)
+        return Templite('memodelete').render(webinfo=webinfo, conn=conn, id=id)
 
     def read(self, id):
         try:
@@ -122,8 +116,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('memoread')
-        return t.render(webinfo=webinfo, conn=conn, id=id)
+        return Templite('memoread').render(webinfo=webinfo, conn=conn, id=id)
 
     def list(self):
         try:
@@ -133,8 +126,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('memolist')
-        return t.render(webinfo=webinfo, conn=conn)
+        return Templite('memolist').render(webinfo=webinfo, conn=conn)
 
     def ignore_list(self):
         try:
@@ -144,8 +136,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('memoignores')
-        return t.render(webinfo=webinfo, conn=conn)
+        return Templite('memoignores').render(webinfo=webinfo, conn=conn)
 
     def ignore_add(self):
         try:
@@ -155,8 +146,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('memoignoreadd')
-        return t.render(webinfo=webinfo, conn=conn)
+        return Templite('memoignoreadd').render(webinfo=webinfo, conn=conn)
 
     def ignore_add_commit(self, account):
         try:
@@ -205,8 +195,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('memowrite')
-        return t.render(webinfo=webinfo, conn=conn, to=to)        
+        return Templite('memowrite').render(webinfo=webinfo, conn=conn, to=to)        
 
     def write_commit(self, to, message):
         try:
@@ -217,8 +206,7 @@ class MemoRoot(object):
             return ''
 
         conn.memoserv.send(to, message)
-        t = Templite('memosent')
-        return t.render(webinfo=webinfo, conn=conn, to=to)
+        return Templite('memosent').render(webinfo=webinfo, conn=conn, to=to)
 
     def forward(self, id, to=''):
         try:
@@ -228,8 +216,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        t = Templite('memoforward')
-        return t.render(webinfo=webinfo, conn=conn, message_id=id, to=to)
+        return Templite('memoforward').render(webinfo=webinfo, conn=conn, message_id=id, to=to)
 
     def forward_commit(self, to, message_id):
         try:
@@ -240,8 +227,7 @@ class MemoRoot(object):
             return ''
 
         conn.memoserv.forward(to, message_id)
-        t = Templite('memosent')
-        return t.render(webinfo=webinfo, conn=conn, to=to)
+        return Templite('memosent').render(webinfo=webinfo, conn=conn, to=to)
 
 class UserRoot(object):
     def __init__(self):
@@ -249,8 +235,7 @@ class UserRoot(object):
         self.channel = ChannelRoot()
 
     def login(self):
-        t = Templite('userlogin')
-        return t.render()
+        return Templite('userlogin').render()
 
     def process_login(self, nickname, password):
         webinfo.response.status = "302 Found"
@@ -275,8 +260,7 @@ class UserRoot(object):
             webinfo.response.headers['location'] = 'login'
             return ''
 
-        t = Templite('dashboard')
-        return t.render(webinfo=webinfo, conn=conn)
+        return Templite('dashboard').render(webinfo=webinfo, conn=conn)
 
     def logout(self):
         try:
