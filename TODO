@@ -1,0 +1,26 @@
+Atheme Web 1.0 (coincides with Atheme 5.0 release!)
+
+[x] Login management
+[x] MemoServ
+  [x] read memos
+  [x] write memos
+  [x] reply to memos
+  [x] forward memos
+  [x] memo ignore list manager
+[/] ChanServ
+  [x] list channels you have access to
+  [x] channel ACL editor (flags only for now)
+  [ ] view channel information (founder, successor, metadata, etc)
+  [ ] edit channel metadata (url, entrymsg, boolean flags like guard)
+[ ] NickServ
+  [ ] registration module
+  [ ] vital information editor
+  [?] password recovery module
+  [?] HostServ:Request integration
+[ ] OperServ
+  [?] akill information module
+[x] Example mod_wsgi config for Apache deployment
+
+Atheme Web 1.1 (Atheme 5.1)
+
+TBD.
