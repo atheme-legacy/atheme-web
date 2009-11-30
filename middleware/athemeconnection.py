@@ -71,6 +71,20 @@ class AthemeChanServMethods(object):
     def set_access_flags(self, channel, nick, flags):
         self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'ChanServ', 'FLAGS', channel, nick, '=' + flags)
 
+    def get_channel_info(self, channel):
+        data = self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'ChanServ', 'INFO', channel)
+        raw_lines = data.split('\n')
+
+        tuple = {}
+        for line in raw_lines:
+            if line[0] == '*' or "Information on" in line:
+                continue
+
+            fields = line.split(' : ', 2)
+            tuple[fields[0].strip()] = fields[1].strip()
+
+        return tuple
+
 class AthemeMemoServMethods(object):
     """
     Parse Atheme MemoServ responses.  Since the XML interface provides the same output as the IRC interface, we
