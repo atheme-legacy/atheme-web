@@ -26,8 +26,15 @@ Installation instructions
 
 5. Enjoy.
 
-In reality, you probably want to use mod_wsgi or something, but I haven't
-figured that one out yet.  I'll get back to you.
+In reality, you probably want to use mod_wsgi or something.  You can find
+a mod_wsgi configuration script at atheme-web.wsgi.  Then you want to do
+something like:
+
+    WSGIScriptAlias / /path/to/atheme-web/atheme-web.wsgi
+
+You may also need to edit the atheme-web.wsgi so that it can find all the
+necessary components, if you do not use a version of Python which supports
+dynamic path binding (2.6 or later?).
 
 TODO
 ----
