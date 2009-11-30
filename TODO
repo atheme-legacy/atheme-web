@@ -10,7 +10,7 @@ Atheme Web 1.0 (coincides with Atheme 5.0 release!)
 [/] ChanServ
   [x] list channels you have access to
   [x] channel ACL editor (flags only for now)
-  [ ] view channel information (founder, successor, metadata, etc)
+  [x] view channel information (founder, successor, metadata, etc)
   [ ] edit channel metadata (url, entrymsg, boolean flags like guard)
 [ ] NickServ
   [ ] registration module
