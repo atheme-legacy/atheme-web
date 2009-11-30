@@ -42,6 +42,7 @@ class AthemeChanServMethods(object):
     """
     def __init__(self, parent):
         self.parent = parent
+        self.flags = ['HOLD', 'SECURE', 'VERBOSE', 'VERBOSE_OPS', 'RESTRICTED', 'KEEPTOPIC', 'TOPICLOCK', 'GUARD', 'FANTASY', 'PRIVATE', 'LIMITFLAGS']
 
     def kick(self, channel, victim, reason):
         self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'ChanServ', 'KICK', channel, victim, reason)
@@ -84,6 +85,22 @@ class AthemeChanServMethods(object):
             tuple[fields[0].strip()] = fields[1].strip()
 
         return tuple
+
+    def get_channel_flags(self, channel):
+        data = self.get_channel_info(channel)
+        flags = data['Flags']
+
+        tuple = {}
+        for flag in self.flags:
+            if flag in flags:
+                tuple[flag] = True
+            else:
+                tuple[flag] = False
+
+        return tuple
+
+    def set_channel_flag(self, channel, flag, value):
+        self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'ChanServ', 'SET', channel, flag, value)
 
 class AthemeMemoServMethods(object):
     """

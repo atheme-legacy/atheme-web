@@ -86,6 +86,40 @@ class ChannelRoot(object):
 
         return Templite('channelinfo').render(webinfo=webinfo, conn=conn, channel=channel)
 
+    def settings(self, channel):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        return Templite('channeleditsettings').render(webinfo=webinfo, conn=conn, channel=channel)
+
+    def settings_commit(self, channel, TOPICLOCK='OFF', SECURE='OFF', FANTASY='OFF', RESTRICTED='OFF', VERBOSE_OPS='OFF', PRIVATE='OFF', KEEPTOPIC='OFF', GUARD='OFF', LIMITFLAGS='OFF', HOLD='OFF', VERBOSE='OFF'):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+
+        if VERBOSE_OPS is True:
+            VERBOSE = "OPS"
+
+        conn.chanserv.set_channel_flag(channel, 'TOPICLOCK', TOPICLOCK)
+        conn.chanserv.set_channel_flag(channel, 'SECURE', SECURE)
+        conn.chanserv.set_channel_flag(channel, 'FANTASY', FANTASY)
+        conn.chanserv.set_channel_flag(channel, 'RESTRICTED', RESTRICTED)
+        conn.chanserv.set_channel_flag(channel, 'PRIVATE', PRIVATE)
+        conn.chanserv.set_channel_flag(channel, 'KEEPTOPIC', KEEPTOPIC)
+        conn.chanserv.set_channel_flag(channel, 'LIMITFLAGS', LIMITFLAGS)
+        conn.chanserv.set_channel_flag(channel, 'VERBOSE', VERBOSE)
+
+        webinfo.response.status = "302 Found"
+        webinfo.response.headers['location'] = 'settings'
+        return ''
+
 class MemoRoot(object):
     def delete_confirm(self, id):
         try:

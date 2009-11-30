@@ -1,6 +1,11 @@
 ${ include("header") }$
 
-${ channel_info = conn.chanserv.get_channel_info(channel) }$
+${
+
+from urllib import quote_plus
+channel_info = conn.chanserv.get_channel_info(channel)
+
+}$
 
 <div style="width: 20%; margin-left: 0.5em; float: right;">
 
@@ -16,6 +21,8 @@ for k in channel_info.keys():
 }$
 
 	</table>
+
+<div style='text-align: center'><a href='settings?channel=${ emit(quote_plus(channel)) }$'>edit settings</a></div>
 </div>
 
 </div>
@@ -38,12 +45,12 @@ ${ access_list = conn.chanserv.get_access_list(channel) }$
 </tr>
 	${
 	    for chan in access_list:
-                from urllib import quote_plus
                 chan['channelurl'] = quote_plus(channel)
                 emit("<tr><td>%(id)s</td><td>%(nick)s</td><td>%(flags)s</td><td><a href='edit_flags?channel=%(channelurl)s&nick=%(nick)s'>edit flags</a> - <a href='remove_flags?channel=%(channelurl)s&nick=%(nick)s'>remove flags</a></td></tr>" % chan)
 	}$
 
 </table>
+
 </div>
 
 </div>
