@@ -13,6 +13,7 @@ class AthemeNickServMethods(object):
     """
     def __init__(self, parent):
         self.parent = parent
+        self.flags = ['Hold', 'HideMail', 'NeverOp', 'NoOp', 'NoMemo', 'EMailMemos', 'Private']
 
     def _parse_access(self, data):
         raw_lines = data.split('\n')
@@ -34,6 +35,35 @@ class AthemeNickServMethods(object):
 
     def list_access(self, target):
         return self._parse_access(self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'NickServ', 'LISTCHANS', target))
+
+    def get_info(self, target):
+        data = self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'NickServ', 'INFO', target)
+        raw_lines = data.split('\n')
+
+        tuple = {}
+        for line in raw_lines:
+            if "Information on" in line:
+                continue
+            if ":" not in line:
+                continue
+
+            fields = line.split(':', 2)
+            tuple[fields[0].strip()] = fields[1].strip()
+
+        return tuple
+
+    def get_account_flags(self, target):
+        data = self.get_info(target)
+        flags = data['Flags']
+
+        tuple = {}
+        for flag in self.flags:
+            if flag in flags:
+                tuple[flag] = True
+            else:
+                tuple[flag] = False
+
+        return tuple
 
 class AthemeChanServMethods(object):
     """
