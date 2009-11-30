@@ -312,3 +312,6 @@ class UserRoot(object):
         webinfo.response.status = "302 Found"
         webinfo.response.headers['location'] = 'login'
         return ''
+
+    def account(self):
+        return ''
