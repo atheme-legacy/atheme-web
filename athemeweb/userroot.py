@@ -314,4 +314,11 @@ class UserRoot(object):
         return ''
 
     def account(self):
-        return ''
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = 'login'
+            return ''
+
+        return Templite('userinfo').render(webinfo=webinfo, conn=conn)
