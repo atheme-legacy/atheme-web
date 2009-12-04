@@ -36,7 +36,7 @@ if flags is None:
 </tr>
 
 <tr>
-	<td colspan="2"><input type="submit" value="Send Memo"></td>
+	<td colspan="2"><input type="submit" value="Change Flags"></td>
 </tr>
 
 </form>
