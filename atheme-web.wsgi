@@ -18,4 +18,4 @@ def make_app(global_conf=None):
     from paste.session import SessionMiddleware
     return SessionMiddleware(error_app)
 
-application = make_app({'debug': True})
+application = make_app({'debug': True, 'expiration': 60})
