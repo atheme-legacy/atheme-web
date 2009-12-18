@@ -47,7 +47,7 @@ class AthemeNickServMethods(object):
             if ":" not in line:
                 continue
 
-            fields = line.split(':', 2)
+            fields = line.split(':', 1)
             tuple[fields[0].strip()] = fields[1].strip()
 
         return tuple
