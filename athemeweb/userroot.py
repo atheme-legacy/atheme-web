@@ -326,6 +326,19 @@ class UserRoot(object):
         webinfo.response.headers['refresh'] = '5; URL=account'
         return Templite('genericmessage').render(webinfo=webinfo, conn=conn, message='Your password has been set to %s' % new_password)
 
+    def update_email(self, new_email):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = 'login'
+            return ''
+
+        conn.nickserv.set_email(new_email)
+
+        webinfo.response.headers['refresh'] = '5; URL=account'
+        return Templite('genericmessage').render(webinfo=webinfo, conn=conn, message='Your e-mail has been set to %s' % new_email)
+
     def account(self):
         try:
             conn = get_xmlrpc_connection()
