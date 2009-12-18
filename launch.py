@@ -13,4 +13,4 @@ def make_app(global_conf=None):
 
 if __name__ == '__main__':
     from paste import httpserver
-    httpserver.serve(make_app({'debug': True, 'expiration': 60}), host='67.202.104.35', port='8080')
+    httpserver.serve(make_app({'debug': True, 'expiration': 60}), host='0.0.0.0', port='8080')
