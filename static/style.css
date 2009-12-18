@@ -51,11 +51,11 @@ body {
 	font-size: 100%;
 }
 
-.boxbody input[type=text], input[type=password] {
+input[type=text], input[type=password] {
 	width: 100%;
 }
 
-.boxbody input[type=submit] {
+input[type=submit] {
 	float: right;
 	margin: 0;
 }
