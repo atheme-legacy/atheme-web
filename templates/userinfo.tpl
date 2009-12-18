@@ -18,5 +18,25 @@ ${ include("header") }$
 	</table>
 	</form>
 </div>
+
+</div>
+
+<div style="width: 49%; margin-right: 0.5em;">
+
+${ user_info = conn.nickserv.get_info(conn.username) }$
+
+<div class="boxhead">
+	<h2>Information about ${ emit(conn.username) }$</h2>
+</div>
+<div class="boxbody">
+	<table>
+${
+for k in user_info.keys():
+    emit("<tr><th>%s</th><td>%s</td></tr>" % (k, user_info[k]))
+}$
+	</table>
+</div>
+
+</div>
 	
 ${ include("footer") }$
