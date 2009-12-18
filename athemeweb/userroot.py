@@ -280,21 +280,11 @@ class UserRoot(object):
             webinfo.response.headers['location'] = 'login'
             return ''
 
-        webinfo.response.headers['location'] = 'dashboard'
+        webinfo.response.headers['location'] = 'account'
         sessiondata = webinfo.environ['paste.session.factory']()
         sessiondata['conn.username'] = conn.username
         sessiondata['conn.authcookie'] = conn.authcookie
         return ''
-
-    def dashboard(self):
-        try:
-            conn = get_xmlrpc_connection()
-        except:
-            webinfo.response.status = "302 Found"
-            webinfo.response.headers['location'] = 'login'
-            return ''
-
-        return Templite('dashboard').render(webinfo=webinfo, conn=conn)
 
     def logout(self):
         try:

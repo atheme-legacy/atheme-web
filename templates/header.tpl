@@ -8,7 +8,6 @@ ${ import cgi }$
 <div id="header">
 </div>
 <ul id="navlinks">
-	<li><a href="/user/dashboard">Dashboard</a></li>
 	<li><a href="/user/memo/list">Memo List</a></li>
 	<li><a href="/user/memo/ignore_list">Memo Ignores</a></li>
 	<li><a href="/user/memo/write">Write Memo</a></li>
