@@ -65,6 +65,9 @@ class AthemeNickServMethods(object):
 
         return tuple
 
+    def set_password(self, password):
+        self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'NickServ', 'SET', 'PASSWORD', password)
+
 class AthemeChanServMethods(object):
     """
     Parse Atheme ChanServ responses.  Since the XML interface provides the same output as the IRC interface, we
