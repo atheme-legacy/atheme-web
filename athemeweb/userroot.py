@@ -313,6 +313,19 @@ class UserRoot(object):
         webinfo.response.headers['location'] = 'login'
         return ''
 
+    def update_password(self, new_password):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = 'login'
+            return ''
+
+        conn.nickserv.set_password(new_password)
+
+        webinfo.response.headers['refresh'] = '5; URL=account'
+        return Templite('genericmessage').render(webinfo=webinfo, conn=conn, message='Your password has been set to %s' % new_password)
+
     def account(self):
         try:
             conn = get_xmlrpc_connection()
