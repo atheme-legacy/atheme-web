@@ -31,7 +31,7 @@ class AthemeNickServMethods(object):
         return list
 
     def list_own_access(self):
-        return self._parse_access(self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'NickServ', 'MYACCESS'))
+        return self._parse_access(self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'NickServ', 'LISTCHANS'))
 
     def list_access(self, target):
         return self._parse_access(self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'NickServ', 'LISTCHANS', target))

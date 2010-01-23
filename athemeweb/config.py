@@ -1,4 +1,4 @@
 #
 # XMLRPC_PATH: path to XMLRPC server.
 #
-XMLRPC_PATH = 'http://216.66.9.15:8080/xmlrpc'
+XMLRPC_PATH = 'http://66.212.21.3:8080/xmlrpc'
