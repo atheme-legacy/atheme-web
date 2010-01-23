@@ -107,17 +107,25 @@ class ChannelRoot(object):
         if VERBOSE_OPS is True:
             VERBOSE = "OPS"
 
-        conn.chanserv.set_channel_flag(channel, 'TOPICLOCK', TOPICLOCK)
-        conn.chanserv.set_channel_flag(channel, 'SECURE', SECURE)
-        conn.chanserv.set_channel_flag(channel, 'FANTASY', FANTASY)
-        conn.chanserv.set_channel_flag(channel, 'RESTRICTED', RESTRICTED)
-        conn.chanserv.set_channel_flag(channel, 'PRIVATE', PRIVATE)
-        conn.chanserv.set_channel_flag(channel, 'KEEPTOPIC', KEEPTOPIC)
-        conn.chanserv.set_channel_flag(channel, 'LIMITFLAGS', LIMITFLAGS)
-        conn.chanserv.set_channel_flag(channel, 'VERBOSE', VERBOSE)
+        params = {
+            'TOPICLOCK': TOPICLOCK,
+            'SECURE': SECURE,
+            'FANTASY': FANTASY,
+            'RESTRICTED': RESTRICTED,
+            'PRIVATE': PRIVATE,
+            'KEEPTOPIC': KEEPTOPIC,
+            'LIMITFLAGS': LIMITFLAGS,
+            'VERBOSE': VERBOSE,
+        }
+
+        for key in params.keys():
+            try:
+                conn.chanserv.set_channel_flag(channel, key, params[key])
+            except:
+                pass
 
         webinfo.response.status = "302 Found"
-        webinfo.response.headers['location'] = 'settings'
+        webinfo.response.headers['location'] = 'settings?channel=%s' % quote_plus(channel)
         return ''
 
 class MemoRoot(object):
