@@ -32,9 +32,13 @@ something like:
 
     WSGIScriptAlias / /path/to/atheme-web/atheme-web.wsgi
 
-You may also need to edit the atheme-web.wsgi so that it can find all the
-necessary components, if you do not use a version of Python which supports
-dynamic path binding (2.6 or later?).
+You MUST edit the atheme-web.wsgi so that it can find the application
+modules.  Instructions are included inside the atheme-web.wsgi file.
+
+Running atheme-web with launch.py is insecure (it puts the application
+into development mode) and not recommended.
+
+Do NOT run atheme-web as root.
 
 TODO
 ----
