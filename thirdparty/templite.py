@@ -88,6 +88,6 @@ class Templite(object):
         for a in args:
             self.__output.append(str(a))
 
-    def include(self, file):
+    def include(self, file, **kw):
         t = Template(file)
-        self.write(t.render())
+        self.write(t.render(kw))
