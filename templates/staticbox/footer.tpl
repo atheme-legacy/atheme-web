@@ -1,7 +1,7 @@
 	</div>
 	<div id="footer">
 		<div id="contact">
-			a <a href="http://www.nenolod.net/">nenolod</a> production
+			powered by <a href="http://www.atheme.net/">atheme-web</a>.
 		</div>
 		Copyright &copy; 2010 <a href="http://staticbox.net/">StaticBox IRC Network</a>.
 	</div>
