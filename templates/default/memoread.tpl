@@ -42,6 +42,9 @@ ${ memo = conn.memoserv.read(id) }$
 </table>
 
 </div>
+
 </div>
+
+${ include("memolistbase", conn=conn) }$
 
 ${ include("footer") }$
