@@ -1,0 +1,122 @@
+body {
+	margin: 0;
+	font-family: "Trebuchet MS", sans-serif;
+}
+
+#wrapper {
+	min-height: 100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+}
+
+#header {
+	background: #666699;
+	color: #eee;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+#header #rightside {
+	padding-right: 0.5em;
+	float: right;
+}
+
+#header #rightside h1 {
+	text-align: right;
+	padding-bottom: 0;
+	margin-top: 0.25em;
+}
+
+#header #rightside #links {
+	font-size: 80%;
+	margin-top: -1em;
+	margin-bottom: 0;
+	padding: 0;
+	float: right;
+}
+
+#header #rightside #links li {
+	display: inline;
+	padding-left: 0.25em;
+	margin-left: 0.25em;
+	text-transform: lowercase;
+}
+
+#header #rightside #links li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+#header #rightside #links li a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+#wrapper {
+}
+
+#page {
+	padding-top: 0.5em;
+	padding-left: 0.5em;
+	padding-right: 0.75em;
+	padding-bottom: 2em;
+	background: #fff;
+}
+
+#footer {
+	background: #666699;
+	color: #eee;
+	clear: both;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	font-size: 75%;
+}
+
+#footer a {
+	color: #fff;
+	text-decoration: none;
+}
+
+#footer a:hover {
+	text-decoration: underline;
+}
+
+#footer #contact {
+	float: right;
+}
+
+#page h2 {
+	margin: 0;
+}
+
+tr:hover {
+	background: #eee;
+}
+
+.boxhead {
+	background: #eee;
+	-moz-border-radius: 1em 1em 0 0;
+	-webkit-border-radius: 1em 1em 0 0;
+	border-radius: 1em 1em 0 0;
+}
+
+.boxhead h2 {
+	font-size: 100%;
+	text-align: center;
+}
+
+.boxbody {
+	font-size: 75%;
+	background: #eee;
+	-moz-border-radius: 0 0 1em 1em;
+	-webkit-border-radius: 0 0 1em 1em;
+	border-radius: 0 0 1em 1em;
+	margin-bottom: 1em;
+}
+
+.boxbody table tr td, th {
+	font-size: 85%;
+}
