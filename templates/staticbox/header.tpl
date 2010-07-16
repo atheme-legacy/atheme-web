@@ -13,6 +13,7 @@ ${ import cgi }$
 			<li><a href="http://staticbox.net/">staticbox</a></li>
 			<li><a href="http://services.staticbox.net/">services admin</a></li>
 			<li><a href="http://webchat.staticbox.net/">webchat</a></li>
+			<li><a href="http://stats.staticbox.net/">statistics</a></li>
 			<li><a href="/user/account">My Account</a></li>
 			<li><a href="/user/channel/list">My Channels</a></li>
 			<li><a href="/user/memo/list">Memo List</a></li>
