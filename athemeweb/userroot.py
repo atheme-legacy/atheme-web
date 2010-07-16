@@ -5,7 +5,7 @@
 #
 
 from middleware.classpublisher import webinfo
-from thirdparty.templite import Templite
+from athemeweb.template import Template
 from middleware.athemeconnection import AthemeXMLConnection
 from athemeweb.config import XMLRPC_PATH
 
@@ -28,7 +28,7 @@ class ChannelRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('mychannels_list').render(webinfo=webinfo, conn=conn)
+        return Template('mychannels_list').render(webinfo=webinfo, conn=conn)
 
     def info(self, channel):
         try:
@@ -38,7 +38,7 @@ class ChannelRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('channelinfo').render(webinfo=webinfo, conn=conn, channel=channel)
+        return Template('channelinfo').render(webinfo=webinfo, conn=conn, channel=channel)
 
     def edit_flags(self, channel, nick=''):
         try:
@@ -48,7 +48,7 @@ class ChannelRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('channeleditflags').render(webinfo=webinfo, conn=conn, channel=channel, nick=nick)
+        return Template('channeleditflags').render(webinfo=webinfo, conn=conn, channel=channel, nick=nick)
 
     def set_flags(self, channel, nick, flags):
         try:
@@ -84,7 +84,7 @@ class ChannelRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('channelinfo').render(webinfo=webinfo, conn=conn, channel=channel)
+        return Template('channelinfo').render(webinfo=webinfo, conn=conn, channel=channel)
 
     def settings(self, channel):
         try:
@@ -94,7 +94,7 @@ class ChannelRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('channeleditsettings').render(webinfo=webinfo, conn=conn, channel=channel)
+        return Template('channeleditsettings').render(webinfo=webinfo, conn=conn, channel=channel)
 
     def settings_commit(self, channel, TOPICLOCK='OFF', SECURE='OFF', FANTASY='OFF', RESTRICTED='OFF', VERBOSE_OPS='OFF', PRIVATE='OFF', KEEPTOPIC='OFF', GUARD='OFF', LIMITFLAGS='OFF', HOLD='OFF', VERBOSE='OFF'):
         try:
@@ -138,7 +138,7 @@ class MemoRoot(object):
             return ''
 
         conn.memoserv.delete(id)
-        return Templite('memodeleted').render(webinfo=webinfo, conn=conn, id=id)
+        return Template('memodeleted').render(webinfo=webinfo, conn=conn, id=id)
 
     def delete(self, id):
         try:
@@ -148,7 +148,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('memodelete').render(webinfo=webinfo, conn=conn, id=id)
+        return Template('memodelete').render(webinfo=webinfo, conn=conn, id=id)
 
     def read(self, id):
         try:
@@ -158,7 +158,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('memoread').render(webinfo=webinfo, conn=conn, id=id)
+        return Template('memoread').render(webinfo=webinfo, conn=conn, id=id)
 
     def list(self):
         try:
@@ -168,7 +168,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('memolist').render(webinfo=webinfo, conn=conn)
+        return Template('memolist').render(webinfo=webinfo, conn=conn)
 
     def ignore_list(self):
         try:
@@ -178,7 +178,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('memoignores').render(webinfo=webinfo, conn=conn)
+        return Template('memoignores').render(webinfo=webinfo, conn=conn)
 
     def ignore_add(self):
         try:
@@ -188,7 +188,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('memoignoreadd').render(webinfo=webinfo, conn=conn)
+        return Template('memoignoreadd').render(webinfo=webinfo, conn=conn)
 
     def ignore_add_commit(self, account):
         try:
@@ -237,7 +237,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('memowrite').render(webinfo=webinfo, conn=conn, to=to)        
+        return Template('memowrite').render(webinfo=webinfo, conn=conn, to=to)        
 
     def write_commit(self, to, message):
         try:
@@ -248,7 +248,7 @@ class MemoRoot(object):
             return ''
 
         conn.memoserv.send(to, message)
-        return Templite('memosent').render(webinfo=webinfo, conn=conn, to=to)
+        return Template('memosent').render(webinfo=webinfo, conn=conn, to=to)
 
     def forward(self, id, to=''):
         try:
@@ -258,7 +258,7 @@ class MemoRoot(object):
             webinfo.response.headers['location'] = '/user/login'
             return ''
 
-        return Templite('memoforward').render(webinfo=webinfo, conn=conn, message_id=id, to=to)
+        return Template('memoforward').render(webinfo=webinfo, conn=conn, message_id=id, to=to)
 
     def forward_commit(self, to, message_id):
         try:
@@ -269,7 +269,7 @@ class MemoRoot(object):
             return ''
 
         conn.memoserv.forward(to, message_id)
-        return Templite('memosent').render(webinfo=webinfo, conn=conn, to=to)
+        return Template('memosent').render(webinfo=webinfo, conn=conn, to=to)
 
 class UserRoot(object):
     def __init__(self):
@@ -277,7 +277,7 @@ class UserRoot(object):
         self.channel = ChannelRoot()
 
     def login(self):
-        return Templite('userlogin').render()
+        return Template('userlogin').render()
 
     def process_login(self, nickname, password):
         webinfo.response.status = "302 Found"
@@ -322,7 +322,7 @@ class UserRoot(object):
         conn.nickserv.set_password(new_password)
 
         webinfo.response.headers['refresh'] = '5; URL=account'
-        return Templite('genericmessage').render(webinfo=webinfo, conn=conn, message='Your password has been set to %s' % new_password)
+        return Template('genericmessage').render(webinfo=webinfo, conn=conn, message='Your password has been set to %s' % new_password)
 
     def update_email(self, new_email):
         try:
@@ -335,7 +335,7 @@ class UserRoot(object):
         conn.nickserv.set_email(new_email)
 
         webinfo.response.headers['refresh'] = '5; URL=account'
-        return Templite('genericmessage').render(webinfo=webinfo, conn=conn, message='Your e-mail has been set to %s' % new_email)
+        return Template('genericmessage').render(webinfo=webinfo, conn=conn, message='Your e-mail has been set to %s' % new_email)
 
     def account(self):
         try:
@@ -345,4 +345,4 @@ class UserRoot(object):
             webinfo.response.headers['location'] = 'login'
             return ''
 
-        return Templite('userinfo').render(webinfo=webinfo, conn=conn)
+        return Template('userinfo').render(webinfo=webinfo, conn=conn)

@@ -31,7 +31,7 @@ class Templite(object):
     auto_emit = re.compile('(^[\'\"])|(^[a-zA-Z0-9_\[\]\'\"]+$)')
     
     def __init__(self, template_file, start='${', end='}$'):
-        template = open('./templates/' + template_file + '.tpl').read()
+        template = open(template_file).read()
         if len(start) != 2 or len(end) != 2:
             raise ValueError('each delimiter must be two characters long')
         delimiter = re.compile('%s(.*?)%s' % (re.escape(start), re.escape(end)), re.DOTALL)
@@ -89,5 +89,5 @@ class Templite(object):
             self.__output.append(str(a))
 
     def include(self, file):
-        t = Templite(file)
+        t = Template(file)
         self.write(t.render())
