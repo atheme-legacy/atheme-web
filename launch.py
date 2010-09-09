@@ -15,7 +15,7 @@ def make_app(global_conf=None):
 
 if __name__ == '__main__':
     from paste import httpserver
-    if len(sys.argv):
+    if len(sys.argv) > 1:
         if sys.argv[1] == '--debug':
             httpserver.serve(make_app({'debug': True, 'expiration': 60}), host='0.0.0.0', port='9090')
     else:
