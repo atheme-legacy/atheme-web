@@ -5,7 +5,7 @@
 #
 
 from athemeweb.userroot import UserRoot
-from middleware.classpublisher import webinfo
+from athemeweb.classpublisher import webinfo
 
 class WebRoot(object):
     def __call__(self):

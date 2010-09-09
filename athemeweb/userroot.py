@@ -4,9 +4,9 @@
 # This file is licensed under the Atheme license.
 #
 
-from middleware.classpublisher import webinfo
+from athemeweb.classpublisher import webinfo
 from athemeweb.template import Template
-from middleware.athemeconnection import AthemeXMLConnection
+from athemeweb.athemeconnection import AthemeXMLConnection
 from athemeweb.config import XMLRPC_PATH
 
 from urllib import quote_plus

@@ -3,7 +3,7 @@
 import sys
 
 def make_app(global_conf=None):
-    from middleware.classpublisher import ClassPublisher
+    from athemeweb.classpublisher import ClassPublisher
     from athemeweb.webroot import WebRoot
     real_app = ClassPublisher(WebRoot())
 
