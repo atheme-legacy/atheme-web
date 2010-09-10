@@ -1,4 +1,4 @@
-${ include("header") }$
+${ include("header", conn=conn) }$
 
 <p>The memo was deleted.</p>
 

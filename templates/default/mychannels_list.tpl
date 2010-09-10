@@ -1,4 +1,4 @@
-${ include("header") }$
+${ include("header", conn=conn) }$
 
 ${ list = conn.nickserv.list_own_access() }$
 

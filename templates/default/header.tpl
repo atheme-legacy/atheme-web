@@ -7,12 +7,19 @@ ${ import cgi }$
 <body>
 <div id="header">
 </div>
+${
+
+from athemeweb.pageset import build_page_set 
+set = build_page_set(conn)
+
+}$
+
 <ul id="navlinks">
-	<li><a href="/user/account">My Account</a></li>
-	<li><a href="/user/channel/list">My Channels</a></li>
-	<li><a href="/user/memo/list">Memo List</a></li>
-	<li><a href="/user/memo/ignore_list">Memo Ignores</a></li>
-	<li><a href="/user/memo/write">Write Memo</a></li>
-	<li><a href="/user/logout">Logout</a></li>
+${
+
+for page in set.keys():
+    emit('<li><a href="/user/%s">%s</a></li>' % (page, set[page]['title']))
+
+}$
 </ul>
 <div id="content">

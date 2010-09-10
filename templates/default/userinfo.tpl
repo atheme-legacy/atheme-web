@@ -1,4 +1,4 @@
-${ include("header") }$
+${ include("header", conn=conn) }$
 
 <div style="width: 50%; margin-left: 0.5em; float: right;">
 

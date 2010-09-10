@@ -1,4 +1,4 @@
-${ include("header") }$
+${ include("header", conn=conn) }$
 
 <div class="boxhead">
 	<h2>Add Memo Ignore</h2>

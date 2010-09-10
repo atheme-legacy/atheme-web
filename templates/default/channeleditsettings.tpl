@@ -1,4 +1,4 @@
-${ include("header") }$
+${ include("header", conn=conn) }$
 
 ${ channel_flags = conn.chanserv.get_channel_flags(channel) }$
 
