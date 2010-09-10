@@ -26,12 +26,6 @@ for page in set.keys():
     emit('<li><a href="/user/%s">%s</a></li>' % (page, set[page]['title']))
 
 }$
-			<li><a href="/user/account">My Account</a></li>
-			<li><a href="/user/channel/list">My Channels</a></li>
-			<li><a href="/user/memo/list">Memo List</a></li>
-			<li><a href="/user/memo/ignore_list">Memo Ignores</a></li>
-			<li><a href="/user/memo/write">Write Memo</a></li>
-			<li><a href="/user/logout">Logout</a></li>
 		</ul>
 	</div>
 	<img src="/static?file=staticbox-logo.png" alt="StaticBox">
