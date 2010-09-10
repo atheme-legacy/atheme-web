@@ -222,6 +222,7 @@ class AthemeXMLConnection(object):
         self.memoserv = AthemeMemoServMethods(self)
         self.nickserv = AthemeNickServMethods(self)
         self.operserv = AthemeOperServMethods(self)
+        self._privset = None
 
     def __getattr__(self, name):
         return self.proxy.__getattr__(name)
@@ -234,7 +235,11 @@ class AthemeXMLConnection(object):
         self.atheme.logout(self.authcookie, self.username)
 
     def get_privset(self):
-        return self.atheme.privset(self.authcookie, self.username).split()
+        if self._privset is not None:
+            return self._privset
+
+        self._privset = self.atheme.privset(self.authcookie, self.username).split()
+        return self._privset
 
     def has_privilege(self, priv):
         try:
