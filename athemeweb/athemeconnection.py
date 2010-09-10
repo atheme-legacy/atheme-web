@@ -215,6 +215,23 @@ class AthemeOperServMethods(object):
     def __init__(self, parent):
         self.parent = parent
 
+    def akill_list(self):
+        akills = self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'OperServ', 'AKILL', 'LIST').split('\n')[1:-1]
+        akillset = {}
+
+        for i in akills:
+            ak = i.split(' ', 6)
+            aki = {'num': int(ak[0].strip(':')),
+                   'mask': ak[1],
+                   'setter': ak[4],
+                   'expiry': ak[6]}
+            akillset[aki['num']] = aki
+
+        return akillset
+
+    def akill_del(self, num):
+        self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'OperServ', 'AKILL', 'DEL', num)
+
 class AthemeXMLConnection(object):
     def __init__(self, url):
         self.proxy = ServerProxy(url)
