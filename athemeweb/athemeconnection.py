@@ -211,12 +211,17 @@ class AthemeMemoServMethods(object):
     def ignore_clear(self):
         self.parent.atheme.command(self.parent.authcookie, self.parent.username, '0.0.0.0', 'MemoServ', 'IGNORE', 'CLEAR')
 
+class AthemeOperServMethods(object):
+    def __init__(self, parent):
+        self.parent = parent
+
 class AthemeXMLConnection(object):
     def __init__(self, url):
         self.proxy = ServerProxy(url)
         self.chanserv = AthemeChanServMethods(self)
         self.memoserv = AthemeMemoServMethods(self)
         self.nickserv = AthemeNickServMethods(self)
+        self.operserv = AthemeOperServMethods(self)
 
     def __getattr__(self, name):
         return self.proxy.__getattr__(name)
@@ -227,3 +232,16 @@ class AthemeXMLConnection(object):
 
     def logout(self):
         self.atheme.logout(self.authcookie, self.username)
+
+    def get_privset(self):
+        return self.atheme.privset(self.authcookie, self.username).split()
+
+    def has_privilege(self, priv):
+        try:
+            if self.get_privset().index(priv):
+                return True
+            else:
+                return False
+        except ValueError, e:
+            return False
+
