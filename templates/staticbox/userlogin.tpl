@@ -1,4 +1,4 @@
-${ include("header") }$
+${ include("header", conn=conn) }$
 
 	<div style="margin-top: 17%;">
 	<center>
