@@ -271,10 +271,36 @@ class MemoRoot(object):
         conn.memoserv.forward(to, message_id)
         return Template('memosent').render(webinfo=webinfo, conn=conn, to=to)
 
+class AkillRoot(object):
+    def list(self):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+        
+        return Template('akill-list').render(webinfo=webinfo, conn=conn)
+        
+    def remove(self, id):
+        try:
+            conn = get_xmlrpc_connection()
+        except:
+            webinfo.response.status = "302 Found"
+            webinfo.response.headers['location'] = '/user/login'
+            return ''
+        
+        conn.operserv.akill_del(id)
+        webinfo.response.status = "302 Found"
+        webinfo.response.headers['location'] = '/user/akill/list'
+        
+        return ''
+
 class UserRoot(object):
     def __init__(self):
         self.memo = MemoRoot()
         self.channel = ChannelRoot()
+        self.akill = AkillRoot()
 
     def login(self):
         return Template('userlogin').render()
