@@ -94,3 +94,10 @@ input[type=submit] {
 	color: #fff;
 }
 
+#navlinks .selected {
+	background: #000;
+}
+
+#navlinks .selected a {
+	color: #fff;
+}

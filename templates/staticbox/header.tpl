@@ -7,6 +7,8 @@ ${ import cgi }$
 <body>
 ${
 
+from athemeweb.classpublisher import webinfo
+
 from athemeweb.pageset import build_page_set 
 set = build_page_set(conn)
 
@@ -23,8 +25,10 @@ set = build_page_set(conn)
 ${
 
 for page in set.keys():
-    emit('<li><a href="/user/%s">%s</a></li>' % (page, set[page]['title']))
-
+    if page in webinfo.environ['SCRIPT_NAME']:
+        emit('<li class="selected"><a href="/user/%s">%s</a></li>' % (page, set[page]['title']))
+    else:
+        emit('<li><a href="/user/%s">%s</a></li>' % (page, set[page]['title']))
 }$
 		</ul>
 	</div>
