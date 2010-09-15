@@ -9,18 +9,19 @@ akills = conn.operserv.akill_list()
 <div>
 
 <div class="boxhead">
-	<h2>AKILL List</h2>
+    <h2>AKILL List</h2>
 </div>
 <div class="boxbody">
 
-	<table width="100%">
-		<tr>
-			<th>AKILL ID</th>
-			<th width="60%">Mask</th>
-			<th>Setter</th>
-			<th>Expiry</th>
-			<th>Actions</th>
-		</tr>
+    <table width="100%">
+        <tr>
+            <th>AKILL ID</th>
+            <th width="60%">Mask</th>
+            <th>Setter</th>
+            <th>Expiry</th>
+            <th>Reason</th>
+            <th>Actions</th>
+        </tr>
 ${
 for akid in akills.keys():
     akill = akills[akid]
@@ -42,14 +43,18 @@ for akid in akills.keys():
     expiry = akill['expiry'].replace('expires in ', '')
     emit(expiry)
     emit('</td>')
+
+    emit('<td>')
+    emit(akill['reason'])
+    emit('</td>')
     
     emit('<td align="right">')
     emit('<a href="remove?id=%d">remove</a>' % akill['num'])
     emit('</td>')
     
     emit('</tr>')
-}$		
-	</table>
+}$      
+    </table>
 
 </div>
 

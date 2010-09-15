@@ -216,15 +216,16 @@ class AthemeOperServMethods(object):
         self.parent = parent
 
     def akill_list(self):
-        akills = self.parent.atheme.command(self.parent.authcookie, self.parent.username, self.parent.ipaddr, 'OperServ', 'AKILL', 'LIST').split('\n')[1:-1]
+        akills = self.parent.atheme.command(self.parent.authcookie, self.parent.username, self.parent.ipaddr, 'OperServ', 'AKILL', 'LIST', 'FULL').split('\n')[1:-1]
         akillset = {}
 
         for i in akills:
-            ak = i.split(' ', 6)
+            ak = i.split(' ', 8)
             aki = {'num': int(ak[0].strip(':')),
                    'mask': ak[1],
                    'setter': ak[4],
-                   'expiry': ak[6]}
+                   'expiry': ak[6],
+                   'reason': ak[8]}
             akillset[aki['num']] = aki
 
         return akillset
