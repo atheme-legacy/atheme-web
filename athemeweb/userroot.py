@@ -13,7 +13,7 @@ from urllib import quote_plus
 
 def get_xmlrpc_connection():
     sessiondata = webinfo.environ['paste.session.factory']()
-    conn = AthemeXMLConnection(XMLRPC_PATH)
+    conn = AthemeXMLConnection(XMLRPC_PATH, webinfo.environ['REMOTE_ADDR'])
     conn.username = sessiondata['conn.username']
     conn.authcookie = sessiondata['conn.authcookie']
 
