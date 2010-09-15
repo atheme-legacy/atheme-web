@@ -35,7 +35,7 @@ def build_page_set(conn):
     realset = {}
     for i in pageset.keys():
         page = pageset[i]
-        if page['privs'] is None or conn.has_privilege(page['privs']):
+        if page['privs'] is None or (conn is not None and conn.has_privilege(page['privs'])):
             realset[i] = page
 
     return realset
