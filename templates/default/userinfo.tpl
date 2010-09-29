@@ -36,6 +36,23 @@ ${ include("header", conn=conn) }$
 	</form>
 </div>
 
+<div class="boxhead" style="margin-top: 1em">
+	<h2>Request vHost</h2>
+</div>
+<div class="boxbody">
+	<form action="request_vhost" method="POST">
+	<table width="100%">
+		<tr>
+			<th width="20%">vHost</th>
+			<td><input type="text" name="vhost"></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="Request New vHost"></td>
+		</tr>
+	</table>
+	</form>
+</div>
+
 </div>
 
 <div style="width: 49%; margin-right: 0.5em;">
