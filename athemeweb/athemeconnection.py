@@ -220,12 +220,12 @@ class AthemeOperServMethods(object):
 		akillset = {}
 
 		for i in akills:
-			ak = i.split(' ', 8)
-			aki = {'num': int(ak[0].strip(':')),
-					'mask': ak[1],
-					'setter': ak[4],
-					'expiry': ak[6],
-					'reason': ak[8]}
+			ak = i.split(' - ', 4)
+			aki = {'num': int(ak[0].split(' ')[0].strip(':')),
+					'mask': ak[0].split(' ')[1],
+					'setter': ak[2].split(' ')[1],
+					'expiry': ak[3],
+					'reason': ak[4]}
 			akillset[aki['num']] = aki
 
 		return akillset
