@@ -5,34 +5,38 @@
 #
 
 def build_page_set(conn):
-    pageset = {
-        'account': {
+    pageset = [
+        {
+            'path': 'account',
             'title': "My Account",
             'privs': None
         },
-        'channel/list': {
+        {
+            'path': 'channel/list',
             'title': "My Channels",
             'privs': None
         },
-        'memo/list': {
+        {
+            'path': 'memo/list',
             'title': "My Memos",
             'privs': None
         },
-        'akill/list': {
+        {
+            'path': 'akill/list',
             'title': "AKILLs",
             'privs': 'operserv:akill',
         },
-        'logout': {
+        {
+            'path': 'logout',
             'title': "Logout",
             'privs': None
         },
-    }
+    ]
 
-    realset = {}
-    for i in pageset.keys():
-        page = pageset[i]
+    realset = []
+    for page in pageset:
         if page['privs'] is None or (conn is not None and conn.has_privilege(page['privs'])):
-            realset[i] = page
+            realset.append(page)
 
     return realset
 

@@ -24,11 +24,11 @@ set = build_page_set(conn)
 			<li><a href="http://stats.staticbox.net/">statistics</a></li>
 ${
 
-for page in set.keys():
-    if page in webinfo.environ['SCRIPT_NAME']:
-        emit('<li class="selected"><a href="/user/%s">%s</a></li>' % (page, set[page]['title']))
+for page in set:
+    if page['path'] in webinfo.environ['SCRIPT_NAME']:
+        emit('<li class="selected"><a href="/user/%s">%s</a></li>' % (page['path'], page['title']))
     else:
-        emit('<li><a href="/user/%s">%s</a></li>' % (page, set[page]['title']))
+        emit('<li><a href="/user/%s">%s</a></li>' % (page['path'], page['title']))
 }$
 		</ul>
 	</div>
