@@ -5,8 +5,7 @@ ${ import cgi }$
 	<link rel="stylesheet" href="/static?file=style.css" type="text/css">
 </head>
 <body>
-<div id="header">
-</div>
+
 ${
 
 from athemeweb.classpublisher import webinfo
@@ -16,7 +15,11 @@ set = build_page_set(conn)
 
 }$
 
-<ul id="navlinks">
+<div id="header">
+	<img src="/static?file=logo.png" alt="Atheme Web Interface">
+
+<div id="navbar">
+<ul id="links">
 ${
 
 for page in set.keys():
@@ -27,4 +30,8 @@ for page in set.keys():
 
 }$
 </ul>
-<div id="content">
+</div>
+
+</div>
+
+<div id="page">

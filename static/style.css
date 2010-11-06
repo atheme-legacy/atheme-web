@@ -1,35 +1,68 @@
 body {
-	font-family: "Trebuchet MS", "Droid Sans", sans-serif;
 	margin: 0;
+	font-family: "Trebuchet MS", sans-serif;
+	background: #000;
+	color: #999;
 }
+
+a {
+	text-decoration: none;
+	color: #069;
+}
+
+img {
+	border: none;
+}
+
+table tr td { vertical-align: top; }
 
 #header {
-	height: 83px;
-	background: url('/static?file=logo.png') no-repeat #cacaca;
+	background: url('/static?file=bgstripe.png');
+	padding-left: 1em;
 }
 
-#content {
-	margin: 1em;
+#page {
+	margin-top: 1em;
+	margin-left: 1em;
+	margin-right: 1em;
 }
 
-/* Show only to IE PC \*/
-* html .boxhead h2 {height: 1%;} /* For IE 5 PC */
-
-.sidebox {
-	margin: 25px 100px 0px; /* center for now */
-	width: 15em; /* ems so it will grow */
-	background: #fff;
-	font-size: 100%;
+h2 {
+	border-bottom: #444 1px dotted;
 }
+
+#links {
+	font-size: 125%;
+	margin-top: -1.5em;
+	margin-right: 0.75em;
+	margin-bottom: 0;
+	padding: 0;
+	float: right;
+}
+
+#links li {
+	display: inline;
+	padding-left: 0.25em;
+	margin-left: 0.25em;
+	text-transform: lowercase;
+}
+
+#links li a {
+	color: #ddd;
+}
+
+#links li a:hover {
+	text-decoration: underline;
+}
+
 .boxhead {
-	background: #fff;
-	margin: 0;
+	background: #222;
+	margin: 0px;
 	padding: 0px;
 	text-align: center;
 }
+
 .boxhead h2 {
-	background: url('/static?file=boxbg.png') repeat;
-	border: 1px solid #bbbbbb;
 	margin: 0;
 	padding: 0px 0px 0px;
 	color: #000; 
@@ -38,66 +71,10 @@ body {
 	color: #fff;
 	line-height: 1.2em;
 }
+
 .boxbody {
-	background: #fff;
-	border: 1px solid #bbbbbb;
+	background: #111;
 	margin: 0;
 	font-size: 75%;
 	padding: 10px 10px 0px;
-}
-
-.boxbody input {
-	font-family: "Trebuchet MS", "Droid Sans", sans-serif;
-	font-size: 100%;
-}
-
-input[type=text], input[type=password] {
-	width: 100%;
-}
-
-input[type=submit] {
-	float: right;
-	margin: 0;
-}
-
-#navlinks {
-	background: #cacaca;
-	margin: 0;
-	text-align: right;
-	min-height: 19px;
-	padding-right: 1em;
-	padding-left: 0;
-}
-
-#navlinks li {
-	background: #eeeeee;
-	display: inline;
-	padding-left: 0.25em;
-	padding-right: 0.25em;
-	margin-left: 0.25em;
-	margin-right: 0.25em;
-	text-align: center;
-}
-
-#navlinks li a {
-	color: #000;
-	text-decoration: none;
-}
-
-#navlinks li:hover {
-	background: #000;
-	border-radius: 3px;
-	color: #fff;
-}
-
-#navlinks li a:hover {
-	color: #fff;
-}
-
-#navlinks .selected {
-	background: #000;
-}
-
-#navlinks .selected a {
-	color: #fff;
 }

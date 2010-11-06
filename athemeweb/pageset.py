@@ -15,11 +15,7 @@ def build_page_set(conn):
             'privs': None
         },
         'memo/list': {
-            'title': "Memo Inbox",
-            'privs': None
-        },
-        'memo/write': {
-            'title': "New Memo",
+            'title': "My Memos",
             'privs': None
         },
         'akill/list': {
