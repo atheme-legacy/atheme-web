@@ -3,7 +3,7 @@
 	<title>Login</title>
 	<link rel="stylesheet" href="/static?file=style.css" type="text/css">
 </head>
-<body style='background: #cacaca;'>
+<body>
 
 	<div style="margin-top: 20%;">
 	<center>
@@ -12,25 +12,39 @@
 
 		<form action="process_login" method="post">
 
-		<table width="350" style="background: #dddddd; border: 1px #999 solid;">
+		<div style="width: 20%">
 
-			<tr>
-				<td>Nickname</td>
-				<td><input name="nickname" type="text"></td>
-			</tr>
+			<div class="boxhead">
+				<h2>Login</h2>
+			</div>
 
-			<tr>
-				<td>Password</td>
-				<td><input name="password" type="password"></td>
-			</tr>
+			<div class="boxbody">
 
-			<tr>
-				<td colspan="2" style="text-align: center;">
-					<input value="Log in" type="submit">
-				</td>
-			</tr>
+				<table width="100%" style="font-size: 100%">
+
+				<tr>
+					<td>Nickname</td>
+					<td><input name="nickname" type="text"></td>
+				</tr>
+
+				<tr>
+					<td>Password</td>
+					<td><input name="password" type="password"></td>
+				</tr>
+
+				<tr>
+					<td>
+						<a href="/user/register">Register</a>
+					</td>
+
+					<td>
+						<input value="Log in" type="submit">
+					</td>
+				</tr>
 	
-		</table>
+				</table>
+
+			</div>
 
 		</form>
 
