@@ -3,7 +3,7 @@ ${ include("header", conn=None) }$
 	<div style="margin-top: 17%;">
 	<center>
 
-		<form action="process_login" method="post">
+		<form action="process_registration" method="post">
 
 		<table width="350" style="background: #ddd; border-radius: 1em; -moz-border-radius: 1em; -webkit-border-radius: 1em; padding: 1em;">
 
