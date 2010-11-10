@@ -4,7 +4,7 @@
 # This file is licensed under the Atheme license.
 #
 
-from xmlrpclib import ServerProxy
+from xmlrpclib import ServerProxy, Fault
 
 class AthemeNickServMethods(object):
 	"""
@@ -277,3 +277,8 @@ class AthemeXMLConnection(object):
 		except ValueError, e:
 			return False
 
+	def register(self, username, password, email):
+		try:
+			return self.atheme.command('', '', '', 'NickServ', 'REGISTER', username, password, email)
+		except Fault, e:
+			return 'Error: ' + e.faultString

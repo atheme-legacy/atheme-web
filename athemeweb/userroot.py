@@ -305,6 +305,9 @@ class UserRoot(object):
 	def login(self):
 		return Template('userlogin').render()
 
+	def register(self):
+		return Template('userreg').render()
+
 	def process_login(self, nickname, password):
 		webinfo.response.status = "302 Found"
 		try:
@@ -319,6 +322,21 @@ class UserRoot(object):
 		sessiondata['conn.username'] = conn.username
 		sessiondata['conn.authcookie'] = conn.authcookie
 		return ''
+
+	def process_registration(self, nickname, password, email):
+		message = ''
+
+		conn = AthemeXMLConnection(XMLRPC_PATH)
+		message = conn.register(nickname, password, email)
+
+#		try:
+#		except:
+#			webinfo.response.status = "302 Found"
+#			webinfo.response.headers['location'] = 'register'
+#			return ''
+
+		webinfo.response.headers['location'] = 'account'
+		return Template('regmessage').render(webinfo=webinfo, conn=conn, message=message)
 
 	def logout(self):
 		try:
