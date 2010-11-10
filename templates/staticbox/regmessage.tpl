@@ -8,25 +8,17 @@ ${ include("header", conn=None) }$
 		<table width="350" style="background: #ddd; border-radius: 1em; -moz-border-radius: 1em; -webkit-border-radius: 1em; padding: 1em;">
 
 			<tr>
-				<td>Account name:</td>
-				<td><input name="nickname" type="text" style="width: 100%"></td>
+				<th colspan="2">Registration</th>
 			</tr>
 
 			<tr>
-				<td>Password:</td>
-				<td><input name="password" type="password" style="width: 100%"></td>
+				<td>${ print message }$</td>
 			</tr>
 
 			<tr>
-				<td>
-					<a href="/user/register">Register</a>
-				</td>
-
-				<td>
-					<input value="Log in" type="submit">
-				</td>
+				<td><a href="/user/login">Proceed to login</a></td>
 			</tr>
-	
+
 		</table>
 
 		</form>

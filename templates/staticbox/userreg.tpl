@@ -8,6 +8,10 @@ ${ include("header", conn=None) }$
 		<table width="350" style="background: #ddd; border-radius: 1em; -moz-border-radius: 1em; -webkit-border-radius: 1em; padding: 1em;">
 
 			<tr>
+				<th colspan="2">Registration</th>
+			</tr>
+
+			<tr>
 				<td>Account name:</td>
 				<td><input name="nickname" type="text" style="width: 100%"></td>
 			</tr>
@@ -18,12 +22,13 @@ ${ include("header", conn=None) }$
 			</tr>
 
 			<tr>
-				<td>
-					<a href="/user/register">Register</a>
-				</td>
+				<td>E-Mail Address</td>
+				<td><input name="email" type="email" style="width: 100%"></td>
+			</tr>
 
-				<td>
-					<input value="Log in" type="submit">
+			<tr>
+				<td colspan="2" style="text-align: center;">
+					<input value="Register Account" type="submit">
 				</td>
 			</tr>
 	
