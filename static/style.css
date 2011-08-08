@@ -17,7 +17,7 @@ img {
 table tr td { vertical-align: top; }
 
 #header {
-	background: url('/static?file=bgstripe.png');
+	background: url('/static/bgstripe.png');
 	padding-left: 1em;
 }
 

@@ -7,6 +7,13 @@
 from athemeweb.userroot import UserRoot
 from athemeweb.classpublisher import webinfo
 
+class StaticRoot(object):
+    def __getattr__(self, attr):
+        def reader(*a):
+            fd = open('./static/'+attr)
+            return fd.read()
+        return reader
+
 class WebRoot(object):
     def __call__(self):
         webinfo.response.status = "302 Redirect"
@@ -16,6 +23,4 @@ class WebRoot(object):
     def __init__(self):
         self.user = UserRoot()
 
-    def static(self, file):
-        fd = open('./static/' + file)
-        return fd.read() 
+    static = StaticRoot()

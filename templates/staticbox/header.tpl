@@ -2,7 +2,7 @@ ${ import cgi }$
 <html>
 <head>
 	<title>services.staticbox.net</title>
-	<link rel="stylesheet" href="/static?file=staticbox-style.css" type="text/css">
+	<link rel="stylesheet" href="/static/staticbox-style.css" type="text/css">
 </head>
 <body>
 ${
@@ -32,7 +32,7 @@ for page in set:
 }$
 		</ul>
 	</div>
-	<img src="/static?file=staticbox-logo.png" alt="StaticBox">
+	<img src="/static/staticbox-logo.png" alt="StaticBox">
 </div>
 <div id="page">
 

@@ -2,7 +2,7 @@ ${ import cgi }$
 <html>
 <head>
 	<title>Atheme Services Web Interface</title>
-	<link rel="stylesheet" href="/static?file=style.css" type="text/css">
+	<link rel="stylesheet" href="/static/style.css" type="text/css">
 </head>
 <body>
 
@@ -16,7 +16,7 @@ set = build_page_set(conn)
 }$
 
 <div id="header">
-	<img src="/static?file=logo.png" alt="Atheme Web Interface">
+	<img src="/static/logo.png" alt="Atheme Web Interface">
 
 <div id="navbar">
 <ul id="links">

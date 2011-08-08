@@ -1,14 +1,14 @@
 <html>
 <head>
 	<title>Login</title>
-	<link rel="stylesheet" href="/static?file=style.css" type="text/css">
+	<link rel="stylesheet" href="/static/style.css" type="text/css">
 </head>
 <body>
 
 	<div style="margin-top: 20%;">
 	<center>
 
-		<img src="/static?file=logo.png">
+		<img src="/static/logo.png">
 
 		<form action="process_login" method="post">
 
