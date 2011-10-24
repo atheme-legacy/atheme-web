@@ -279,7 +279,7 @@ class AthemeXMLConnection(object):
 
 	def register(self, username, password, email):
 		try:
-			return self.atheme.command('', '', '', 'NickServ', 'REGISTER', username, password, email)
+			return self.atheme.command('*', '*', '*', 'NickServ', 'REGISTER', username, password, email)
 		except Fault, e:
 			if e.faultString == 'A user matching this account is already on IRC.':
 				return 'Error: ' + e.faultString + '  If you are already connected to IRC using this nickname, please complete the registration procedure through IRC.'
