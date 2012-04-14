@@ -123,8 +123,10 @@ class AthemeChanServMethods(object):
 				continue
 
 			fields = line.split(' : ', 2)
-			tuple[fields[0].strip()] = fields[1].strip()
-
+			try:
+				tuple[fields[0].strip()] = fields[1].strip()
+			except:
+				pass
 		return tuple
 
 	def get_channel_flags(self, channel):
