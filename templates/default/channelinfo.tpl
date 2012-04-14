@@ -22,7 +22,7 @@ for k in channel_info.keys():
 
 	</table>
 
-<div style='text-align: center'><a href='settings?channel=${ emit(quote_plus(channel)) }$'>edit settings</a></div>
+<div style='text-align: center'><a href='/user/channel/settings?channel=${ emit(quote_plus(channel)) }$'>edit settings</a></div>
 </div>
 
 </div>
@@ -46,7 +46,7 @@ ${ access_list = conn.chanserv.get_access_list(channel) }$
 	${
 	    for chan in access_list:
                 chan['channelurl'] = quote_plus(channel)
-                emit("<tr><td>%(id)s</td><td>%(nick)s</td><td>%(flags)s</td><td><a href='edit_flags?channel=%(channelurl)s&nick=%(nick)s'>edit flags</a> - <a href='remove_flags?channel=%(channelurl)s&nick=%(nick)s'>remove flags</a></td></tr>" % chan)
+                emit("<tr><td>%(id)s</td><td>%(nick)s</td><td>%(flags)s</td><td><a href='/user/channel/edit_flags?channel=%(channelurl)s&nick=%(nick)s'>edit flags</a> - <a href='/user/channel/remove_flags?channel=%(channelurl)s&nick=%(nick)s'>remove flags</a></td></tr>" % chan)
 	}$
 
 </table>

@@ -30,7 +30,7 @@ ${ memo = conn.memoserv.read(id) }$
 
 <p>Are you sure you wish to delete it?</p>
 
-<a href="delete_confirm?id=${ emit(id) }$">Yes</a><br>
-<a href="list">No</a>
+<a href="/user/memo/delete_confirm?id=${ emit(id) }$">Yes</a><br>
+<a href="/user/memo/list">No</a>
 
 ${ include("footer") }$

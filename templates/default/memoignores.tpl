@@ -8,10 +8,10 @@ ${ list = conn.memoserv.ignore_list() }$
         <h2>Actions</h2>
 </div>
 <div class="boxbody">
-        <div style="text-align: center"><a href="ignore_add">Add Ignore</a></div>
-        <div style="text-align: center"><a href="ignore_list">View Ignore List</a></div>
-        <div style="text-align: center"><a href="ignore_clear">Clear Ignore List</a></div>
-        <div style="text-align: center"><a href="write">Write Memo</a></div>
+        <div style="text-align: center"><a href="/user/memo/ignore_add">Add Ignore</a></div>
+        <div style="text-align: center"><a href="/user/memo/ignore_list">View Ignore List</a></div>
+        <div style="text-align: center"><a href="/user/memo/ignore_clear">Clear Ignore List</a></div>
+        <div style="text-align: center"><a href="/user/memo/write">Write Memo</a></div>
 </div>
 
 </div>
@@ -33,7 +33,7 @@ ${ list = conn.memoserv.ignore_list() }$
 	    i = 1
 	    for memo in list:
                 memo['id'] = i
-                emit("<tr><td>%(id)s</td><td>%(account)s</td><td><a href='ignore_delete?account=%(account)s'>delete</a></tr>" % memo)
+                emit("<tr><td>%(id)s</td><td>%(account)s</td><td><a href='/user/memo/ignore_delete?account=%(account)s'>delete</a></tr>" % memo)
                 i = i + 1
 	}$
 

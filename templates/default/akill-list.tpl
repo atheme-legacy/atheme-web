@@ -49,7 +49,7 @@ for akid in akills.keys():
     emit('</td>')
     
     emit('<td align="right">')
-    emit('<a href="remove?id=%d">remove</a>' % akill['num'])
+    emit('<a href="/user/akill/remove?id=%d">remove</a>' % akill['num'])
     emit('</td>')
     
     emit('</tr>')

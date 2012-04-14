@@ -17,7 +17,7 @@ ${ list = conn.memoserv.list() }$
 	    i = 1
 	    for memo in list:
                 memo['id'] = i
-                emit("<tr><td><a href='read?id=%(id)s'>%(id)s</a></td><td>%(from)s</td><td>%(sent)s</td></tr>" % memo)
+                emit("<tr><td><a href='/user/memo/read?id=%(id)s'>%(id)s</a></td><td>%(from)s</td><td>%(sent)s</td></tr>" % memo)
                 i = i + 1
 	}$
 </table>

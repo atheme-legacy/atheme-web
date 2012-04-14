@@ -8,10 +8,10 @@ ${ memo = conn.memoserv.read(id) }$
 	<h2>Actions</h2>
 </div>
 <div class="boxbody">
-	<div style="text-align: center;"><a href="delete?id=${ emit(id) }$">Delete</a></div>
-	<div style="text-align: center;"><a href="write?to=${ emit(memo['from']) }$">Reply</a></div>
-	<div style="text-align: center;"><a href="forward?id=${ emit(id) }$">Forward</a></div>
-	<div style="text-align: center;"><a href="ignore_add_commit?account=${ emit(memo['from']) }$">Ignore User</a></div>
+	<div style="text-align: center;"><a href="/user/memo/delete?id=${ emit(id) }$">Delete</a></div>
+	<div style="text-align: center;"><a href="/user/memo/write?to=${ emit(memo['from']) }$">Reply</a></div>
+	<div style="text-align: center;"><a href="/user/memo/forward?id=${ emit(id) }$">Forward</a></div>
+	<div style="text-align: center;"><a href="/user/memo/ignore_add_commit?account=${ emit(memo['from']) }$">Ignore User</a></div>
 </div>
 
 </div>

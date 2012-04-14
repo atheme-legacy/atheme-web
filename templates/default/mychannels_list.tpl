@@ -17,7 +17,7 @@ ${ list = conn.nickserv.list_own_access() }$
 	    for chan in list:
                 from urllib import quote_plus
                 chan['channelurl'] = quote_plus(chan['channel'])
-                emit("<tr><td>%(channel)s</td><td>%(flags)s</td><td><a href='info?channel=%(channelurl)s'>more info</a></td></tr>" % chan)
+                emit("<tr><td>%(channel)s</td><td>%(flags)s</td><td><a href='/user/channel/info?channel=%(channelurl)s'>more info</a></td></tr>" % chan)
 	}$
 
 </table>
