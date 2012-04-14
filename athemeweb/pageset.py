@@ -26,11 +26,6 @@ def build_page_set(conn):
             'title': "AKILLs",
             'privs': 'operserv:akill',
         },
-        {
-            'path': 'logout',
-            'title': "Logout",
-            'privs': None
-        },
     ]
 
     realset = []

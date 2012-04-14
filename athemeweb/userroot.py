@@ -317,7 +317,7 @@ class UserRoot(object):
 			webinfo.response.headers['location'] = 'login'
 			return ''
 
-		webinfo.response.headers['location'] = 'account'
+		webinfo.response.headers['location'] = 'session'
 		sessiondata = webinfo.environ['paste.session.factory']()
 		sessiondata['conn.username'] = conn.username
 		sessiondata['conn.authcookie'] = conn.authcookie
@@ -403,3 +403,13 @@ class UserRoot(object):
 			return ''
 
 		return Template('userinfo').render(webinfo=webinfo, conn=conn)
+
+	def session(self):
+		try:
+			conn = get_xmlrpc_connection()
+		except:
+			webinfo.response.status = "302 Found"
+			webinfo.response.headers['location'] = 'login'
+			return ''
+
+		return Template('application').render(webinfo=webinfo, conn=conn)

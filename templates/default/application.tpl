@@ -1,4 +1,4 @@
-${ import cgi }$
+${ import cgi, urllib, hashlib }$
 <html>
 <head>
 	<title>Atheme Services Web Interface</title>
@@ -17,11 +17,25 @@ from athemeweb.classpublisher import webinfo
 from athemeweb.pageset import build_page_set 
 set = build_page_set(conn)
 
+info = conn.nickserv.get_info(conn.username)
+
 }$
 
-<div id="header">
-	<img src="/static/logo.png" alt="Atheme Web Interface">
-</div>
+<header>
+	<div id="session">
+${
+		try:
+			email = info['Email']
+		except:
+			email = 'test@example.com'
+
+		gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?" + urllib.urlencode({'s': '40'})
+		emit('<img src="%s" alt="%s">logged in as <strong>%s</strong>.' % (gravatar_url, email, conn.username))
+}$
+		<br><a href="/user/logout">logout</a>
+	</div>
+	<h1 id="logo">Atheme Web</h1>
+</header>
 
 <div id="tabs">
 <ul>
