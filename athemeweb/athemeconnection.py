@@ -24,8 +24,10 @@ class AthemeNickServMethods(object):
 
 			if fields[0] != 'Access':
 				continue
-
-			tuple = {'channel': fields[4], 'flags': fields[2]}
+			try:
+				tuple = {'channel': fields[4], 'flags': fields[2]}
+			except:
+				pass
 			list.append(tuple)
 
 		return list
@@ -48,7 +50,10 @@ class AthemeNickServMethods(object):
 				continue
 
 			fields = line.split(':', 1)
-			tuple[fields[0].strip()] = fields[1].strip()
+			try:
+				tuple[fields[0].strip()] = fields[1].strip()
+			except:
+				pass
 
 		return tuple
 
