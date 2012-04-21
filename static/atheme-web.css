@@ -70,12 +70,29 @@ h2 {
 	box-shadow: 0px 0px 1px 0px;
 }
 
-#tabs {
+#content {
+	float: right;
+	width: 75%;
 	margin-left: 30px;
-	margin-right: 30px;
-	box-shadow: 0px 1px 4px 0px;
+	margin-right: 40px;
+	box-shadow: 0px 0px 1px 0px;
+	background: white;
+	border-radius: 5px;
+	padding: 1em;
 }
 
 #logo {
 	text-indent: -9999px;
+}
+
+#menu {
+	font-size: 75%;
+	float: left;
+	width: 15%;
+}
+
+#menu ul li {
+	margin-left: -1em;
+	list-style: none;
+	line-height: 1.4em;
 }

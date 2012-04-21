@@ -54,7 +54,7 @@ ${
 	<h1 id="logo">Atheme Web</h1>
 </header>
 
-<div id="tabs">
+<div id="menu">
 <ul>
 ${
 
@@ -67,6 +67,8 @@ for page in set:
 }$
 </ul>
 </div>
+
+<div id="content"></div>
 
 </body>
 </html>

@@ -13,4 +13,17 @@ $(document).ready(function() {
 		showSpeed: 0,
 		callerOnState: null,
 	});
+
+	/* initial page for when appshell is constructed */
+	$("#content").load('/user/account');
+	$("#content").delegate('a', 'click', function(event) {
+		$('#content').load(this.href);
+		event.preventDefault();
+	});
+	$("#menu ul li").each(function() {
+		$(this).delegate('a', 'click', function(event) {
+			$('#content').load(this.href);
+			event.preventDefault();
+		});
+	});
 });
