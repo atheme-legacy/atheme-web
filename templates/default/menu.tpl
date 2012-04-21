@@ -6,7 +6,9 @@ ${ import cgi, urllib, hashlib }$
 	<li><a href="/user/account">Overview</a></li>
 	<li><a href="/user/account_settings">Change e-mail, settings and preferences</a></li>
 	<li><a href="/user/memo/list">Message Inbox</a></li>
-	<li>&nbsp;</li>
+</ul>
+
+<ul>
 	<li><strong>Channels</strong></li>
 	<li><a href="/user/channel/list">Channel List</a></li>
 ${ list = conn.nickserv.list_own_access() }$
@@ -20,4 +22,10 @@ ${
 		</ul>
 	</li>
 </ul>
+
+${
+	if conn.has_privilege('general:viewprivs'):
+		include("opermenu", conn=conn, info=info)
+}$
+
 </div>
