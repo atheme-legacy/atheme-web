@@ -8,4 +8,9 @@ $(document).ready(function() {
 			});
 		}
 	});
+	$("#avatar").menu({
+		content: $("#session-menu-content").html(),
+		showSpeed: 0,
+		callerOnState: null,
+	});
 });
