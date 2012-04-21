@@ -88,7 +88,8 @@ h2 {
 #menu {
 	font-size: 75%;
 	float: left;
-	width: 15%;
+	width: 18%;
+	margin-top: -1em;
 }
 
 #menu ul li {

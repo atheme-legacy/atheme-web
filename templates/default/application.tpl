@@ -16,9 +16,6 @@ ${
 
 from athemeweb.classpublisher import webinfo
 
-from athemeweb.pageset import build_page_set 
-set = build_page_set(conn)
-
 info = conn.nickserv.get_info(conn.username)
 
 }$
@@ -54,19 +51,7 @@ ${
 	<h1 id="logo">Atheme Web</h1>
 </header>
 
-<div id="menu">
-<ul>
-${
-
-for page in set:
-    if page['path'] in webinfo.environ['SCRIPT_NAME']:
-        emit('<li class="selected"><a href="/user/%s">%s</a></li>' % (page['path'], page['title']))
-    else:
-        emit('<li><a href="/user/%s">%s</a></li>' % (page['path'], page['title']))
-
-}$
-</ul>
-</div>
+${ include("menu", conn=conn, info=info) }$
 
 <div id="content"></div>
 
