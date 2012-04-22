@@ -20,6 +20,8 @@ info = conn.nickserv.get_info(conn.username)
 
 }$
 
+${ include("dialogs", conn=conn, info=info) }$
+
 <header>
 	<div id="session">
 ${
@@ -45,6 +47,7 @@ ${
 		emit('<img id="miniav" src="%s" alt="%s" style="float: left; margin-right: 5px;"> <span style="font-weight: bold">%s</span></li>' % (gravatar_url, email, conn.username))
 }$
 			</li>
+			<li><a href="#" class="change-password-link">change password</a></li>
 			<li><a href="/user/logout">logout</a></li>
 		</ul>
 	</div>

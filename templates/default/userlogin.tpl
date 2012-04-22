@@ -14,7 +14,7 @@
 
 		<img src="/static/logo.png">
 
-		<div id="tabs" style="width: 20%">
+		<div id="tabs" style="width: 40%">
 		<ul>
 			<li><a href="#login">Login</a></li>
 			<li><a href="#register">Register</a></li>

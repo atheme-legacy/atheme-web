@@ -27,7 +27,9 @@ $.fn.menu = function(options){
 		if (m.menuOpen == false) { m.showMenu(); }
 		else { m.kill(); };
 		return false;
-	});	
+	});
+
+	return m.container();
 };
 
 function Menu(caller, options){
@@ -74,6 +76,10 @@ function Menu(caller, options){
 		$.each(allUIMenus, function(i){
 			if (allUIMenus[i].menuOpen) { allUIMenus[i].kill(); };	
 		});
+	};
+
+	this.container = function(){
+		return container;
 	};
 	
 	this.kill = function(){
