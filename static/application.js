@@ -12,9 +12,6 @@ $(document).ready(function() {
 		content: $("#session-menu-content").html(),
 		showSpeed: 0,
 		callerOnState: null,
-	}).delegate('.change-password-link', 'click', function(event) {
-		alert("hi!");
-		$("#change-password-dialog").dialog("open");
 	});
 
 	/* initial page for when appshell is constructed */
